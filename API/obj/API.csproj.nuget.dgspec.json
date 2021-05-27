@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nabila\\Documents\\API\\API.csproj": {}
+    "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nabila\\Documents\\API\\API.csproj": {
+    "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nabila\\Documents\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Nabila\\Documents\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Nabila\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nabila\\Documents\\API\\obj\\",
+        "outputPath": "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nabila\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -36,7 +36,7 @@ namespace API.Controllers
         public ActionResult Get()
         {
             var get = personRepository.Get();
-            if (get.Count()> 0)
+            if (get != null)
             {
                 return Ok(get);
             }
