@@ -28,7 +28,7 @@ namespace API.Controllers
             }
             else 
             {
-                return NotFound("Data Gagal Ditambahkan");
+                return BadRequest("Data Gagal Ditambahkan");
             }
             
         }
@@ -42,7 +42,7 @@ namespace API.Controllers
             }
             else
             {
-                return NotFound();
+                return NotFound("Data Tidak Ditemukan");
             }
             
         }
@@ -78,11 +78,11 @@ namespace API.Controllers
             var get = personRepository.Delete(nik);
             if (get > 0)
             {
-                return Ok();
+                return Ok("Data Berhasil Dihapus");
             }
             else
             {
-                return NotFound();
+                return BadRequest("Data Tidak Berhasil Dihapus");
             }
         }
 
