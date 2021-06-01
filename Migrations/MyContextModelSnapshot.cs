@@ -29,7 +29,7 @@ namespace API.Migrations
 
                     b.HasKey("NIK");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("TB_M_Account");
                 });
 
             modelBuilder.Entity("API.Models.Education", b =>
@@ -45,14 +45,14 @@ namespace API.Migrations
                     b.Property<string>("GPA")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Universityid")
+                    b.Property<int>("Universityid")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
                     b.HasIndex("Universityid");
 
-                    b.ToTable("Educations");
+                    b.ToTable("TB_M_Education");
                 });
 
             modelBuilder.Entity("API.Models.Person", b =>
@@ -90,14 +90,14 @@ namespace API.Migrations
                     b.Property<int>("NIK")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Educationid")
+                    b.Property<int>("Educationid")
                         .HasColumnType("int");
 
                     b.HasKey("NIK");
 
                     b.HasIndex("Educationid");
 
-                    b.ToTable("Profilings");
+                    b.ToTable("TB_T_Profiling");
                 });
 
             modelBuilder.Entity("API.Models.University", b =>
@@ -112,7 +112,7 @@ namespace API.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Universities");
+                    b.ToTable("TB_M_University");
                 });
 
             modelBuilder.Entity("API.Models.Account", b =>
@@ -130,7 +130,9 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Models.University", "University")
                         .WithMany("Education")
-                        .HasForeignKey("Universityid");
+                        .HasForeignKey("Universityid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("University");
                 });
@@ -139,7 +141,9 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Models.Education", "Education")
                         .WithMany("Profiling")
-                        .HasForeignKey("Educationid");
+                        .HasForeignKey("Educationid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("API.Models.Account", "Account")
                         .WithOne("Profiling")

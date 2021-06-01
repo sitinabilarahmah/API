@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using API.Models;
+using API.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,4 +12,5 @@ namespace API.Repository.Data
     {
         public PersonRepository(MyContext myContext) : base(myContext) { }
     }
+    
 }

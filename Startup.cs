@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using API.Repository.Data;
+using Newtonsoft.Json;
 
 namespace API
 {
@@ -29,10 +30,16 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddScoped<PersonRepository>();
+            services.AddScoped<AccountRepository>();
+            services.AddScoped<ProfilingRepository>();
+            services.AddScoped<EducationRepository>();
+            services.AddScoped<UniversityRepository>();
             services.AddDbContext<MyContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("APIContext")));
+            options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("APIContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,5 +61,6 @@ namespace API
                 endpoints.MapControllers();
             });
         }
+        
     }
 }

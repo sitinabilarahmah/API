@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nabila\\Documents\\API\\API.csproj": {}
+    "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nabila\\Documents\\API\\API.csproj": {
+    "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nabila\\Documents\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Nabila\\Documents\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Nabila\\Documents\\GitHub\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Nabila\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nabila\\Documents\\API\\obj\\",
+        "outputPath": "C:\\Users\\Nabila\\Documents\\GitHub\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nabila\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.6, )"
@@ -47,6 +51,10 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[5.0.6, )"
             },
