@@ -4,14 +4,16 @@ using API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20210603003954_AddTableUpdate3")]
+    partial class AddTableUpdate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,13 +36,20 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.AccountRole", b =>
                 {
-                    b.Property<int>("NIK")
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccountNIK")
                         .HasColumnType("int");
 
                     b.Property<int>("Roleid")
                         .HasColumnType("int");
 
-                    b.HasKey("NIK", "Roleid");
+                    b.HasKey("id");
+
+                    b.HasIndex("AccountNIK");
 
                     b.HasIndex("Roleid");
 
@@ -160,7 +169,7 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Models.Account", "Account")
                         .WithMany("AccountRole")
-                        .HasForeignKey("NIK")
+                        .HasForeignKey("AccountNIK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

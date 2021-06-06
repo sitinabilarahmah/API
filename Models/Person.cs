@@ -19,7 +19,6 @@ namespace API.Models
         public DateTime BirthDate { get; set; }
         public int Salary { get; set; }
         public string Email { get; set; }
-        [JsonIgnore]
         public virtual Account Account { get; set; }
     }
 }

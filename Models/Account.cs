@@ -17,6 +17,7 @@ namespace API.Models
 
         public virtual Person Person { get; set; }
         public virtual Profiling Profiling { get; set; }
+        public virtual ICollection<AccountRole> AccountRole { get; set; }
         
     }
 }

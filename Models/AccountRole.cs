@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    [Table("TB_T_Profiling")]
-    public class Profiling
-    {   [Key]
+    [Table("TB_T_AccountRole")]
+    public class AccountRole
+    {
         public int NIK { get; set; }
-        public int Educationid { get; set; }
-
-        [JsonIgnore]
+        public int Roleid { get; set; }
         public virtual Account Account { get; set; }
-        public virtual Education Education { get; set; }
-        
+        public virtual Role Role { get; set; }
     }
 }
