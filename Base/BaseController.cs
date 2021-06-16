@@ -1,4 +1,5 @@
 ﻿using API.Repository.Interface;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -43,6 +44,7 @@ namespace API.Base
             else
                 return NotFound("No Record");
         }
+        [EnableCors("AllowOrigin")]
         [HttpGet("{key}")]
         public ActionResult<Entity>Get(Key key)
         {
@@ -56,6 +58,7 @@ namespace API.Base
                 return NotFound("Data Tidak Ditemukan");
             }
         }
+        [EnableCors("AllowOrigin")]
         [HttpPut]
         public ActionResult<Entity> Update(Entity entity)
         {

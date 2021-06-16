@@ -69,7 +69,7 @@ namespace API.Repository.Data
                 AccountRole accountRole = new AccountRole()
                 {
                     NIK = account.NIK,
-                    Roleid = registerVM.Roleid
+                    Roleid = 2
                 };
                 _context.Add(accountRole);
                 result = _context.SaveChanges();
@@ -80,7 +80,7 @@ namespace API.Repository.Data
                 //};
                 //_context.Add(role);
                 //result = _context.SaveChanges();
-                
+
             }
             return result;
         }
@@ -135,6 +135,27 @@ namespace API.Repository.Data
                 }).ToList();
             return all.FirstOrDefault(p => p.NIK == nik);
         }
+        public int Delete(int nik)
+        {
+            var person = _context.Persons.Find(nik);
+            if (person != null)
+            {
+                _context.Remove(person);
+                _context.SaveChanges();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int Update(Person person)
+        {
+            _context.Entry(person).State = EntityState.Modified;
+            int result = _context.SaveChanges();
+            return result;
+        }
 
         public int Login(LoginVM loginVM)
         {
@@ -170,6 +191,8 @@ namespace API.Repository.Data
                 return new JwtSecurityTokenHandler().WriteToken(token);
             }
         }
+
+
         //public int ChangePass(int NIK, ChangePassVM model)
         //{
         //    Account account = new Account();

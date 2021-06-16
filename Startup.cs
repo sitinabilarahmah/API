@@ -36,7 +36,7 @@ namespace API
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44397"));
+                options.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44397").AllowAnyMethod().AllowCredentials().AllowAnyHeader());
             });
             services.AddControllers()
             .AddNewtonsoftJson(options =>
@@ -114,7 +114,7 @@ namespace API
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseCors(options => options.WithOrigins("https://localhost:44397"));
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

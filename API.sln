@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API.csproj", "{5E3B7AB1-90EA-4994-B5EB-C7385E5287D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StCORS", "..\SCORS\StCORS.csproj", "{68F2CD41-9A8A-4EC3-BE31-A966EE69C172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StCORS", "..\SCORS\StCORS.csproj", "{68F2CD41-9A8A-4EC3-BE31-A966EE69C172}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

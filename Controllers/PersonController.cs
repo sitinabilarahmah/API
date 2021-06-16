@@ -32,7 +32,8 @@ namespace API.Controllers
             //_personRepository = person;
             //_configuration = configuration;
         }
-        
+
+        [EnableCors("AllowOrigin")]
         [Route("Register")]
         [HttpPost]
         public IActionResult Register (RegisterVM registerVM)
@@ -61,7 +62,7 @@ namespace API.Controllers
                 return BadRequest("Invalid Email or Password");
             }
         }
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         [HttpGet]
         [Route("GetAllProfile")]
         [EnableCors("AllowOrigin")]
@@ -78,7 +79,7 @@ namespace API.Controllers
             }
 
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet("GetProfilebyId/{nik}")]
         public ActionResult GetProfilebyId(int nik)
         {
@@ -93,75 +94,104 @@ namespace API.Controllers
             }
 
         }
-
-        
-            //[HttpPost]
-            //public ActionResult<Entity> Post(Entity entity)
-            //{
-            //    var post = repo.Insert(entity);
-            //    if (post > 0)
-            //    {
-            //        return Ok("Data Ditambahkan");
-            //    }
-            //    else
-            //    {
-            //        return BadRequest("Data Gagal Ditambahkan");
-            //    }
-            //}
-            //{
-            //    Person person = new Person()
-            //    {
-            //        FirstName = registerVM.FirstName,
-            //        LastName = registerVM.LastName,
-            //        Phone = registerVM.Phone,
-            //        BirthDate = registerVM.BirthDate,
-            //        Salary = registerVM.Salary,
-            //        Email = registerVM.Email
-
-            //    };
-            //    var persons = _personRepository.Insert(person);
-            //    Account account = new Account()
-            //    {
-            //        Password = registerVM.Password,
-            //        NIK = person.NIK
-            //    };
-            //    _context.Accounts.AddAsync(account);
-            //    Education education = new Education()
-            //    {
-            //        Degree = registerVM.Degree,
-            //        GPA = registerVM.GPA,
-            //        Universityid = registerVM.Universityid
-            //    };
-            //    _context.Educations.AddAsync(education);
-            //    Profiling profiling = new Profiling()
-            //    {
-            //        NIK = person.NIK,
-            //        Educationid = education.id
-            //    };
-            //    _context.Profilings.AddAsync(profiling);
-            //    _context.SaveChanges();
-            //    return Ok("Registered Succesfully");
-            //}
-            //[Route("Login")]
-            //public IActionResult Login (LoginVM loginVM)
-            //{
-            //    var search = _context.Persons.Where(p => p.Email.Equals(loginVM.Email)
-            //    && p.Account.Password.Equals(loginVM.Password));
-            //    return Ok("Login Succesfull");
-            //}
-            //[HttpPut]
-            //[Route("{NIK}")]
-            //public IActionResult ChangePass (int NIK, ChangePassVM model)
-            //{
-            //    Account account = new Account()
-            //    {
-            //        Password = model.NewPassword
-            //        _context.Entry(ChangePass).State = EntityState.Modified;
-            //        _context.SaveChanges();
-            //        return Ok("Password Changed");
-            //}
-
-            //}
-
+        [HttpPost("Delete/{nik}")]
+        [EnableCors("AllowOrigin")]
+        public ActionResult Delete(int nik)
+        {
+            var get = _personRepository.Delete(nik);
+            if (get != 0)
+            {
+                return Ok("Data Berhasil Dihapus");
+            }
+            else
+            {
+                return BadRequest("Data Gagal Dihapus");
+            }
         }
+        [EnableCors("AllowOrigin")]
+        [HttpPut("UpdateProfile")]
+        public ActionResult UpdateProfile(Person person)
+        {
+            var get = _personRepository.Update(person);
+            if (get > 0)
+            {
+                return Ok("Data Diupdate");
+            }
+            else
+            {
+                return BadRequest("Data Gagal Diupdate");
+            }
+        }
+
+
+
+        //[HttpPost]
+        //public ActionResult<Entity> Post(Entity entity)
+        //{
+        //    var post = repo.Insert(entity);
+        //    if (post > 0)
+        //    {
+        //        return Ok("Data Ditambahkan");
+        //    }
+        //    else
+        //    {
+        //        return BadRequest("Data Gagal Ditambahkan");
+        //    }
+        //}
+        //{
+        //    Person person = new Person()
+        //    {
+        //        FirstName = registerVM.FirstName,
+        //        LastName = registerVM.LastName,
+        //        Phone = registerVM.Phone,
+        //        BirthDate = registerVM.BirthDate,
+        //        Salary = registerVM.Salary,
+        //        Email = registerVM.Email
+
+        //    };
+        //    var persons = _personRepository.Insert(person);
+        //    Account account = new Account()
+        //    {
+        //        Password = registerVM.Password,
+        //        NIK = person.NIK
+        //    };
+        //    _context.Accounts.AddAsync(account);
+        //    Education education = new Education()
+        //    {
+        //        Degree = registerVM.Degree,
+        //        GPA = registerVM.GPA,
+        //        Universityid = registerVM.Universityid
+        //    };
+        //    _context.Educations.AddAsync(education);
+        //    Profiling profiling = new Profiling()
+        //    {
+        //        NIK = person.NIK,
+        //        Educationid = education.id
+        //    };
+        //    _context.Profilings.AddAsync(profiling);
+        //    _context.SaveChanges();
+        //    return Ok("Registered Succesfully");
+        //}
+        //[Route("Login")]
+        //public IActionResult Login (LoginVM loginVM)
+        //{
+        //    var search = _context.Persons.Where(p => p.Email.Equals(loginVM.Email)
+        //    && p.Account.Password.Equals(loginVM.Password));
+        //    return Ok("Login Succesfull");
+        //}
+        //[HttpPut]
+        //[Route("{NIK}")]
+        //public IActionResult ChangePass (int NIK, ChangePassVM model)
+        //{
+        //    Account account = new Account()
+        //    {
+        //        Password = model.NewPassword
+        //        _context.Entry(ChangePass).State = EntityState.Modified;
+        //        _context.SaveChanges();
+        //        return Ok("Password Changed");
+        //}
+
+        //}
+
+    }
 }
